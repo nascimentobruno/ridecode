@@ -153,10 +153,9 @@
         <h2>Fale com a RideCode</h2>
         <p class="sub">Parcerias, dúvidas ou mídia? Escreva pra gente.</p>
         <div class="panel">
-          <p>Email: <a href="mailto:contato@ridecode.dev">contato@ridecode.dev</a></p>
-          <p>Instagram: <a href="#">@ridecode.dev</a> · LinkedIn: <a href="#">RideCode</a></p>
-          <p>Preferiu WhatsApp? <a href="#">Clique aqui</a> (link direto).</p>
-        </div>
+          <p>Email: <a href="mailto:a definir">a definir</a></p>
+          <p>LinkedIn: <a href="#">RideCode</a></p>
+      </div>
       </div>
       <div class="panel">
         <h3>Quer testar o FuelTrack?</h3>
@@ -178,7 +177,26 @@
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  // Atualiza o ano no footer (já existia)
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Toggle do menu mobile
+  const burger = document.querySelector('.burger');
+  const menu = document.getElementById('primary-menu');
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('open', !open);
+    });
+    // Fecha ao clicar num link
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('open');
+      });
+    });
+  }
+</script>
 </body>
 </html>
