@@ -14,20 +14,26 @@
 <body>
   <!-- Header -->
   <header>
-    <div class="container nav">
-      <div class="brand">
-        <img src="assets/ridecode-logo.png" alt="Logo RideCode" class="logo" />
-        <strong>RideCode</strong>
-      </div>
-      <nav class="menu" aria-label="Primária">
-        <a href="#sobre">Sobre</a>
-        <a href="#valores">Missão & Valores</a>
-        <a href="#objetivos">Objetivos</a>
-        <a href="#apps">Apps</a>
-        <a href="#contato">Contato</a>
-      </nav>
+  <div class="container nav">
+    <div class="brand">
+      <img src="assets/ridecode-logo.png" alt="Logo RideCode" class="logo" />
+      <strong>RideCode</strong>
     </div>
-  </header>
+
+    <!-- botão hamburguer (mobile) -->
+    <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="primary-menu" class="menu" aria-label="Primária">
+      <a href="#sobre">Sobre</a>
+      <a href="#valores">Missão & Valores</a>
+      <a href="#objetivos">Objetivos</a>
+      <a href="#apps">Apps</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
 
   <!-- Hero -->
   <section class="hero">

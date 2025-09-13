@@ -53,3 +53,45 @@ h2{font-size:clamp(26px,3.2vw,36px); margin:0 0 14px}
 /* Responsivo */
 @media (max-width: 900px){.hero-grid,.contact{grid-template-columns:1fr} .cards{grid-template-columns:1fr} .apps{grid-template-columns:1fr 1fr}}
 @media (max-width: 560px){.apps{grid-template-columns:1fr}}
+/* ---- Mobile Menu / Burger ---- */
+.nav { position: relative; }
+.menu { display: flex; gap: 22px; font-weight: 600; }
+.menu a { padding: 10px 8px; line-height: 1; }
+
+.burger {
+  display: none;
+  width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer;
+  align-items: center; justify-content: center; border-radius: 10px;
+}
+.burger span {
+  display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0;
+  transition: transform .25s ease, opacity .2s ease;
+}
+
+/* Breakpoint: ativa menu móvel */
+@media (max-width: 720px) {
+  .burger { display: inline-flex; }
+  /* menu vira painel suspenso */
+  .menu {
+    position: absolute; top: 64px; right: 16px; left: 16px;
+    display: grid; gap: 10px; padding: 12px;
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    border: 1px solid var(--line); border-radius: 14px;
+    transform: translateY(-8px); opacity: 0; pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .menu a { padding: 12px; border-radius: 10px; }
+  .menu a:active { background: rgba(255,255,255,.06); }
+
+  /* animação do ícone (vira X) */
+  .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* grids em 1 coluna no mobile (se já não tiver) */
+  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .illus-wrap { order: -1; }
+  .cards, .apps { grid-template-columns: 1fr; gap: 12px; }
+  .btn, .input { min-height: 44px; }
+}
