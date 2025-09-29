@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/logoridecodeico.png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title> <b><>RideCode</> </b></title>
+  <title>RideCode</title>
   <meta name="description" content="RideCode: startup de apps fundada por Bruno e Mayke. FuelTrack será o primeiro lançamento." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,38 +14,49 @@
 <body>
   <!-- Header -->
   <header>
-  <div class="container nav">
-    <div class="brand">
-      <img src="assets/Logo-RideCode-Col.png" alt="Logo RideCode" class="logo" />
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Início RideCode">
+        <img src="assets/Logo-RideCode-Col.png" alt="Logo RideCode" class="logo" />
+        <strong class="sr-only">RideCode</strong>
+      </a>
+
+      <!-- botão hamburguer (mobile) -->
+      <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="primary-menu" class="menu" aria-label="Menu principal">
+        <a href="#valores">Quem Somos</a>
+        <a href="#apps">Nossos Projetos</a>
+        <a href="#contato">Fale Conosco</a>
+      </nav>
     </div>
-
-    <!-- botão hamburguer (mobile) -->
-    <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav id="primary-menu" class="menu" aria-label="Primária">
-      <a href="#valores">Quem Somos</a>
-      <a href="#apps">Nossos Projetos</a>
-      <a href="#contato">Fale Conosco</a>
-    </nav>
-  </div>
-</header>
+  </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="top">
     <div class="container hero-grid">
       <div>
+        <p class="eyebrow">RideCode</p>
         <h1 class="title">Acelerando ideias, <span class="grad">codificando o futuro</span>.</h1>
-        <p class="lead">Somos uma Startup que une a essência biker com tecnologia para criar
-aplicações úteis e funcionais que vão resolver problemas do seu negócio.</p>
+        <p class="lead">
+          Somos uma Startup que une a essência biker com tecnologia para criar
+          aplicações úteis e funcionais que vão resolver problemas do seu negócio.
+        </p>
         <div class="cta">
-          <a class="btn primary" href="#apps"> Gostei, quero saber mais.</a>
+          <a class="btn primary" href="#apps">Gostei, quero saber mais</a>
           <a class="btn" href="#sobre">Quero um projeto personalizado</a>
         </div>
       </div>
+
       <div class="illus-wrap">
-        <img src="assets/ridecode-logo.png" alt="Logo RideCode" class="illus" />
+        <img
+          src="assets/Animação - RideCode site.gif"
+          alt="Animação RideCode"
+          class="illus"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
   </section>
@@ -56,29 +67,44 @@ aplicações úteis e funcionais que vão resolver problemas do seu negócio.</p
       <h2>Somos bikers, somos criadores, somos RideCode</h2>
       <div class="panel">
         Nascemos da paixão de dois amigos por duas forças que aceleram qualquer jornada: motociclismo e tecnologia.
-Unimos essas paixões para criar soluções digitais ágeis, autênticas e inovadoras, feitas para quem valoriza velocidade, liberdade e experiências
-reais.
+        Unimos essas paixões para criar soluções digitais ágeis, autênticas e inovadoras, feitas para quem valoriza
+        velocidade, liberdade e experiências reais.
       </div>
     </div>
   </section>
 
   <!-- Missão, Visão e Valores -->
   <section id="valores">
-    <div class="container">
-      <h2> Visão de negócios</h2>
-      <p class="sub">Na RideCode, cada projeto é mais do que um app — é uma rota de 
-crescimento.
- Acreditamos que a verdadeira inovação nasce quando paixão e estraté
-gia aceleram na mesma direção. Nosso modelo de negócio vai além da 
-criação de aplicativos: buscamos construir um ecossistema digital sus
-tentável, onde cada app se conecta ao próximo, formando uma rede de 
-soluções que gera valor contínuo para usuários e parceiros.
- Nosso olhar está sempre na frente, como quem encara a estrada sem 
-medo do próximo quilômetro. É assim que planejamos: com visão de 
-longo prazo, escalabilidade e impacto real no mercado.
- Para nós, tecnologia não é só código — é liberdade, é performance e é 
-oportunidade de negócios. E a RideCode está pronta para guiar essa 
-jornada.</p>
+    <div class="container valores-grid">
+      <!-- Texto -->
+      <div class="valores-texto">
+        <h2>Visão de negócios</h2>
+        <p class="sub">Na RideCode, cada projeto é mais do que um app — é uma rota de crescimento.</p>
+        <p>
+          Acreditamos que a verdadeira inovação nasce quando paixão e estratégia aceleram na mesma direção.
+          Nosso modelo de negócio vai além da criação de aplicativos: buscamos construir um ecossistema digital
+          sustentável, onde cada app se conecta ao próximo, formando uma rede de soluções que gera valor contínuo
+          para usuários e parceiros.
+        </p>
+        <p>
+          Nosso olhar está sempre na frente, como quem encara a estrada sem medo do próximo quilômetro.
+          É assim que planejamos: com visão de longo prazo, escalabilidade e impacto real no mercado.
+        </p>
+        <p>
+          Para nós, tecnologia não é só código — é liberdade, performance e oportunidade de negócios.
+          E a RideCode está pronta para guiar essa jornada.
+        </p>
+      </div>
+
+      <!-- Imagem -->
+      <div class="valores-media">
+        <img
+          src="assets/Foto---Visão-de-negócios.jpg"
+          alt="Visão de Negócios - RideCode"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
     </div>
   </section>
 
@@ -87,11 +113,15 @@ jornada.</p>
     <div class="container">
       <h2>Nossos Projetos</h2>
       <p class="sub">Do conceito ao asfalto: nossos lançamentos.</p>
+
       <div class="apps">
         <article class="app">
           <span class="badge">Primeiro lançamento</span>
           <h3>FuelTrack</h3>
-          <p class="meta">Controle seu consumo, abastecimentos e autonomia com inteligência. Interface leve, dados úteis e visão por semana/mês.</p>
+          <p class="meta">
+            Controle seu consumo, abastecimentos e autonomia com inteligência.
+            Interface leve, dados úteis e visão por semana/mês.
+          </p>
           <div class="cta">
             <a class="btn primary" href="#contato">Quero saber mais</a>
             <a class="btn" href="#">Ver detalhes (em breve)</a>
@@ -108,13 +138,16 @@ jornada.</p>
         <h2>Fale com a RideCode</h2>
         <p class="sub">Parcerias, dúvidas ou mídia? Escreva pra gente.</p>
         <div class="panel">
-          <p>Email: <a href="mailto:a definir">a definir</a></p>
-          <p>LinkedIn: <a href="#">RideCode</a></p>
+          <p>Email: <a href="mailto:contato@ridecode.com.br">contato@ridecode.com.br</a></p>
+          <p>LinkedIn: <a href="#" rel="noopener">RideCode</a></p>
+        </div>
       </div>
-      </div>
-      </div>
+      <!-- Coluna 2 livre (form, QR, imagem, etc.) -->
+      <!-- <div>...</div> -->
+    </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container footer">
       <div>© <span id="y"></span> RideCode. Todos os direitos reservados.</div>
@@ -123,26 +156,26 @@ jornada.</p>
   </footer>
 
   <script>
-  // Atualiza o ano no footer (já existia)
-  document.getElementById('y').textContent = new Date().getFullYear();
+    // Atualiza o ano no footer
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-  // Toggle do menu mobile
-  const burger = document.querySelector('.burger');
-  const menu = document.getElementById('primary-menu');
-  if (burger && menu) {
-    burger.addEventListener('click', () => {
-      const open = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', String(!open));
-      menu.classList.toggle('open', !open);
-    });
-    // Fecha ao clicar num link
-    menu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        burger.setAttribute('aria-expanded', 'false');
-        menu.classList.remove('open');
+    // Toggle do menu mobile
+    const burger = document.querySelector('.burger');
+    const menu = document.getElementById('primary-menu');
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        const open = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', String(!open));
+        menu.classList.toggle('open', !open);
       });
-    });
-  }
-</script>
+      // Fecha ao clicar num link
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          burger.setAttribute('aria-expanded', 'false');
+          menu.classList.remove('open');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
