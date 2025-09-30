@@ -218,3 +218,50 @@ body.menu-open{ overflow:hidden; }
 .sr-only{
   position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
 }
+/* hero compacto da página de projeto */
+.hero--compact{ padding:56px 0 32px; }
+
+/* cartão do formulário */
+.form-card{
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+}
+
+/* grid do form */
+.project-form{ width:100%; }
+.form-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.field{ display:flex; flex-direction:column; gap:8px; }
+.field label{ font-weight:700; font-size:.95rem; }
+.field input,
+.field textarea{
+  width:100%;
+  padding:14px 12px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:#0d172a;
+  color:var(--text);
+}
+.field textarea{ resize: vertical; }
+.field--full{ grid-column: 1 / -1; }
+
+.check-inline{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.95rem; color:var(--muted); margin-top:6px;
+}
+.check-inline input{ width:18px; height:18px; }
+
+.form-actions{
+  margin-top: 16px;
+  display:flex; gap:12px; flex-wrap:wrap;
+}
+
+/* responsivo do form */
+@media (max-width: 720px){
+  .form-grid{ grid-template-columns:1fr; }
+}
