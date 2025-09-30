@@ -20,11 +20,12 @@
         <strong class="sr-only">RideCode</strong>
       </a>
 
-      <!-- botão hamburguer (mobile) -->
+      <!-- botão hamburguer (mobile) - 1 span, as outras linhas virão via CSS -->
       <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu">
-        <span></span><span></span><span></span>
+        <span></span>
       </button>
 
+      <!-- menu -->
       <nav id="primary-menu" class="menu" aria-label="Menu principal">
         <a href="#valores">Quem Somos</a>
         <a href="#apps">Nossos Projetos</a>
@@ -159,20 +160,24 @@
     // Atualiza o ano no footer
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Toggle do menu mobile
+    // Toggle do menu mobile + bloqueio de scroll
     const burger = document.querySelector('.burger');
     const menu = document.getElementById('primary-menu');
+
     if (burger && menu) {
       burger.addEventListener('click', () => {
         const open = burger.getAttribute('aria-expanded') === 'true';
         burger.setAttribute('aria-expanded', String(!open));
         menu.classList.toggle('open', !open);
+        document.body.classList.toggle('menu-open', !open); // <- bloqueia/libera scroll
       });
-      // Fecha ao clicar num link
+
+      // Fecha ao tocar em um link
       menu.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => {
           burger.setAttribute('aria-expanded', 'false');
           menu.classList.remove('open');
+          document.body.classList.remove('menu-open');
         });
       });
     }

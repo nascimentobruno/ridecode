@@ -28,7 +28,8 @@ header{
 .logo{ height:42px }
 .brand strong{ letter-spacing:.2px; font-weight:800 }
 .menu{ display:flex; gap:22px; font-weight:600 }
-.menu a{ opacity:.9 } .menu a:hover{ opacity:1 }
+.menu a{ padding:10px 8px; line-height:1; opacity:.9 } 
+.menu a:hover{ opacity:1 }
 
 /* Hero */
 .hero{ padding:84px 0 64px; position:relative }
@@ -49,27 +50,16 @@ header{
   justify-content: center;
   align-items: center;
 }
-
 .illus{
   width:min(520px, 90%);
   filter:
     drop-shadow(0 16px 60px rgba(0,225,255,.15))
     drop-shadow(0 24px 80px rgba(21,255,135,.12));
-
-  /* Fade total nas bordas (horizontal e vertical) */
-  -webkit-mask-image: radial-gradient(ellipse at center,
-    rgba(0,0,0,1) 85%,
-    rgba(0,0,0,0) 100%);
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: cover;
-
-  mask-image: radial-gradient(ellipse at center,
-    rgba(0,0,0,1) 85%,
-    rgba(0,0,0,0) 100%);
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: cover;
+  /* Fade total nas bordas */
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+  -webkit-mask-repeat:no-repeat; -webkit-mask-position:center; -webkit-mask-size:cover;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+  mask-repeat:no-repeat; mask-position:center; mask-size:cover;
 }
 
 /* Sections */
@@ -114,62 +104,114 @@ h2{ font-size:clamp(26px,3.2vw,36px); margin:0 0 14px }
 /* Footer */
 .footer{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding-bottom:20px; color:var(--muted) }
 
-/* ---- Mobile Menu / Burger ---- */
-.nav { position: relative; }
-.menu { display: flex; gap: 22px; font-weight: 600; }
-.menu a { padding: 10px 8px; line-height: 1; }
+/* ===================== */
+/*    MENU / BURGER      */
+/* ===================== */
+
+/* Burger – 3 linhas via CSS (topo/before, meio/span, base/after) */
 .burger{
   display:none; width:44px; height:44px; border:0; background:transparent; cursor:pointer;
-  align-items:center; justify-content:center; border-radius:10px;
+  position:relative; align-items:center; justify-content:center; border-radius:10px;
+  z-index:10001; /* acima do painel */
 }
-.burger span{
-  display:block; width:22px; height:2px; background:var(--text); margin:4px 0;
-  transition: transform .25s ease, opacity .2s ease;
+.burger::before,
+.burger span,
+.burger::after{
+  content:"";
+  position:absolute;
+  left:50%; transform:translateX(-50%);
+  width:22px; height:2px; background:var(--text);
+  transition: transform .25s ease, opacity .2s ease, top .25s ease, bottom .25s ease;
+}
+.burger::before{ top:14px; }   /* linha de cima   */
+.burger span{    top:21px; }   /* linha do meio   */
+.burger::after{  bottom:14px; }/* linha de baixo  */
+
+/* estado ABERTO: vira X */
+.burger[aria-expanded="true"]::before{
+  top:21px; transform:translateX(-50%) rotate(45deg);
+}
+.burger[aria-expanded="true"] span{ opacity:0; }
+.burger[aria-expanded="true"]::after{
+  bottom:auto; top:21px; transform:translateX(-50%) rotate(-45deg);
 }
 
-/* Responsivo */
+/* Bloqueia scroll quando o menu abre (classe aplicada via JS) */
+body.menu-open{ overflow:hidden; }
+
+/* --- Valores (texto + imagem lado a lado) --- */
+.valores-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr; /* desktop: texto maior, imagem menor */
+  grid-template-areas:"texto imagem";
+  align-items:center; gap:24px;
+}
+.valores-texto{ grid-area:texto; max-width:60ch; }
+.valores-media{ grid-area:imagem; display:flex; justify-content:center; }
+.valores-media img{
+  width:min(520px, 100%); height:auto; border-radius:12px;
+  box-shadow: 0 16px 60px rgba(0,225,255,.12), 0 24px 80px rgba(21,255,135,.10);
+}
+
+/* Responsivo (layouts gerais) */
 @media (max-width: 900px){
   .hero-grid, .contact{ grid-template-columns:1fr }
   .cards{ grid-template-columns:1fr }
   .apps{ grid-template-columns:1fr 1fr }
-  .valores-grid{ grid-template-columns:1fr }
+
+  /* valores: 1 coluna e imagem abaixo do texto */
+  .valores-grid{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "texto"
+      "imagem";
+  }
+  .valores-media{ margin-top:20px; }
 }
 @media (max-width: 560px){
   .apps{ grid-template-columns:1fr }
 }
 
-/* Breakpoint: ativa menu móvel */
+/* Mobile: ativa burger e painel “vidro fosco” full-screen */
 @media (max-width: 720px){
   .burger{ display:inline-flex; }
+
+  /* Painel vidro: full-screen + blur */
   .menu{
-    position:absolute; top:64px; right:16px; left:16px;
-    display:grid; gap:10px; padding:12px;
-    background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-    border:1px solid var(--line); border-radius:14px;
-    transform:translateY(-8px); opacity:0; pointer-events:none;
-    transition:opacity .2s ease, transform .2s ease;
+    position: fixed;
+    inset: 0;                     /* cobre a tela inteira */
+    padding: 84px 16px 16px;      /* espaço p/ header (64px + respiro) */
+    display: grid;
+    align-content: start;
+    gap: 12px;
+
+    color: #fff; /* letras brancas */
+    background: rgba(13, 23, 42, 0.55); /* vidro translúcido */
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    z-index: 10000;
+
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
   }
-  .menu.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
-  .menu a{ padding:12px; border-radius:10px; }
-  .menu a:active{ background:rgba(255,255,255,.06); }
+  .menu.open{
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
 
-  /* animação do ícone (vira X) */
-  .burger[aria-expanded="true"] span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
-  .burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
-  .burger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
-}
-
-/* --- Valores (texto + imagem lado a lado) --- */
-.valores-grid{
-  display:grid;
-  grid-template-columns:1.1fr .9fr; /* texto maior, imagem menor */
-  align-items:center; gap:24px;
-}
-.valores-texto{ max-width:60ch; }
-.valores-media{ display:flex; justify-content:center; }
-.valores-media img{
-  width:min(520px, 100%); height:auto; border-radius:12px;
-  box-shadow: 0 16px 60px rgba(0,225,255,.12), 0 24px 80px rgba(21,255,135,.10);
+  .menu a{
+    color: #fffafa;
+    padding: 14px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.952);
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .menu a:active{ background: rgba(255,255,255,0.10); }
 }
 
 /* Acessibilidade visual escondida */
