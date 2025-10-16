@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logoridecodeico.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mensagem enviada — RideCode</title>
+  <meta name="description" content="Confirmação de envio — RideCode." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+      background: radial-gradient(1200px 800px at 70% -10%, rgba(21,255,135,.08), transparent 60%),
+                  linear-gradient(180deg, #0b0f16 0%, #0e141f 100%);
+      color: #e6f0ff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .card {
+      background-color: rgba(15, 26, 46, 0.85);
+      border: 1px solid #1b2a45;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 225, 255, 0.1);
+      max-width: 500px;
+      padding: 2rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .card img {
+      width: 90px;
+      margin-bottom: 1.5rem;
+    }
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00e1ff, #15ff87);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: .5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #a7b3c7;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, #00e1ff, #15ff87);
+      color: #0b1220;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      padding: 0.8rem 1.6rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+      transform: scale(1.02);
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="assets/Logo-RideCode-Col.png" alt="RideCode Logo">
+    <h1 class="title">Mensagem enviada!</h1>
+    <p>Recebemos seu pedido de projeto personalizado. 🏍️<br>
+    Em breve nossa equipe entrará em contato para conversar sobre sua ideia.</p>
+    <a href="index.html#top" class="btn">Voltar ao site</a>
+  </div>
+
+  <footer>
+    <p>© <span id="y"></span> RideCode — Acelerando ideias, codificando o futuro.</p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
